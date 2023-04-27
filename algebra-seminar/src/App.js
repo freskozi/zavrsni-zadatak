@@ -17,11 +17,29 @@ class App extends React.Component {
     return '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
   }
 
+  state = {
+    messages: [
+      {
+        text: "This is a test message!",
+        member: {
+          color: "blue",
+          username: "bluemoon"
+        }
+      }
+    ],
+    member: {
+      username: this.randomName(),
+      color: this.randomColor()
+    }
+  }
+
   render(){
   return (
     <div className="App">
-      Chat app
-      <Messages/>
+      <Messages
+        messages={this.state.messages}
+        currentMember={this.state.member}
+      />
     </div>
   );
 }
